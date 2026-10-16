@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Case study: Cable Matcher, a model Ethan Fang built at Packet Micro that scores how similar two cables are from their TDR curves, using weights learned from engineers' pairing decisions.">
+  <title>Wire Selection Model | Ethan Fang</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <style>
+    header, main, footer { border: 1px solid; }
+
+    /* Custom Element #1: <role-callout>, a semantic block that marks what I personally did on a project. */
+    role-callout {
+      display: block;
+      border: 2px solid;
+      padding: 0.5rem 1rem;
+      margin: 1rem 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <p><a href="../index.html">Ethan Fang</a></p>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../work.html">Work</a></li>
+        <li><a href="../mentorship.html">Mentorship</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../resume.html">Resume</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <p><a href="../work.html">&larr; Back to Work</a></p>
+
+    <article>
+      <header>
+        <h1>Wire Selection Model</h1>
+        <p>Packet Micro, Santa Clara · <time datetime="2026-06">June</time> to <time datetime="2026-09">September 2026</time></p>
+      </header>
+
+      <p>I built <b>Cable Matcher</b>, a tool that scores how similar any two cables are by comparing features pulled from their <abbr title="time-domain reflectometry">TDR</abbr> curves. It combines those features into one score using weights learned from an engineer's real pairing decisions, turning past judgment into something repeatable and automatic.</p>
+      <p><small>Details here are kept general to protect Packet Micro's internal data.</small></p>
+
+      <role-callout>
+        <h2>My Role</h2>
+        <p>As an intern, I built Cable Matcher's Python backend, including the feature extraction and the weight learning, and its React review tool, where pairs of curves are compared and labeled. I also added a sorting feature to a Streamlit app that reuses the same peak and trough logic.</p>
+      </role-callout>
+
+      <section aria-labelledby="problem-heading">
+        <h2 id="problem-heading">Problem</h2>
+        <p>Choosing the right wire for a probe was a <em>manual</em> engineering decision. It depended on an engineer's experience and took time on every job. It was time consuming to have an engineer check for every possible pairing in a set.</p>
+      </section>
+
+      <section aria-labelledby="approach-heading">
+        <h2 id="approach-heading">Approach</h2>
+        <ol>
+          <li><strong>Pull features from each curve.</strong> For every cable, I find the peaks and troughs in its TDR curve and turn them into a small set of numbers that describe its shape.</li>
+          <li><strong>Compare two cables feature by feature.</strong> For any pair, each feature gives its own measure of how close the two cables are.</li>
+          <li><strong>Learn how much each feature matters.</strong> Using pairs an engineer had already matched, I fit a weight for each feature so the combined score agrees with the engineer's decisions.</li>
+          <li><strong>Score every pairing.</strong> The weighted features add up to one similarity score, so every possible pair in a set can be ranked automatically.</li>
+        </ol>
+        <svg width="770" height="200" viewBox="0 0 770 200" role="img" aria-labelledby="flow-title flow-desc">
+          <title id="flow-title">How Cable Matcher scores a pair of cables</title>
+          <desc id="flow-desc">Two TDR curves go through feature extraction. The features are combined using weights learned from an engineer's past pairings, producing one similarity score.</desc>
+          <rect x="10" y="20" width="160" height="60" rx="8" fill="none" stroke="black" stroke-width="2"/>
+          <text x="90" y="55" text-anchor="middle" font-family="sans-serif" font-size="15">Two TDR curves</text>
+          <line x1="170" y1="50" x2="196" y2="50" stroke="black" stroke-width="2"/>
+          <polygon points="196,43 210,50 196,57" fill="black"/>
+          <rect x="210" y="20" width="170" height="60" rx="8" fill="none" stroke="black" stroke-width="2"/>
+          <text x="295" y="46" text-anchor="middle" font-family="sans-serif" font-size="15">Extract features</text>
+          <text x="295" y="66" text-anchor="middle" font-family="sans-serif" font-size="12">peaks and troughs</text>
+          <line x1="380" y1="50" x2="406" y2="50" stroke="black" stroke-width="2"/>
+          <polygon points="406,43 420,50 406,57" fill="black"/>
+          <rect x="420" y="20" width="160" height="60" rx="8" fill="none" stroke="black" stroke-width="2"/>
+          <text x="500" y="55" text-anchor="middle" font-family="sans-serif" font-size="15">Weighted sum</text>
+          <line x1="580" y1="50" x2="606" y2="50" stroke="black" stroke-width="2"/>
+          <polygon points="606,43 620,50 606,57" fill="black"/>
+          <rect x="616" y="20" width="140" height="60" rx="8" fill="none" stroke="black" stroke-width="3"/>
+          <text x="686" y="55" text-anchor="middle" font-family="sans-serif" font-size="15" font-weight="bold">Similarity score</text>
+          <rect x="400" y="120" width="200" height="60" rx="8" fill="none" stroke="black" stroke-width="2"/>
+          <text x="500" y="146" text-anchor="middle" font-family="sans-serif" font-size="15">Learned weights</text>
+          <text x="500" y="166" text-anchor="middle" font-family="sans-serif" font-size="12">fit to an engineer's pairings</text>
+          <line x1="500" y1="120" x2="500" y2="94" stroke="black" stroke-width="2"/>
+          <polygon points="493,94 500,80 507,94" fill="black"/>
+        </svg>
+        <p>The model is deliberately simple: a set of linear weights fit with SciPy's optimizer, <em>not</em> a neural network. That keeps it fast, easy to explain, and easy to check against what an engineer would have chosen.</p>
+        <p>Engineers review pairs in a React tool that overlays two cables' curves on one chart, and those labels feed back into the weights. Each trained version of the weights is saved, so a new version can be compared with older ones.</p>
+      </section>
+
+      <section aria-labelledby="result-heading">
+        <h2 id="result-heading">Result</h2>
+        <p>Instead of an engineer checking every possible pairing in a set by hand, Cable Matcher scores all of them automatically, so the engineer starts from a ranked list. Because the weights come from real decisions, the scores follow the same judgment every time.</p>
+      </section>
+      <footer>
+        <h2>Tech used</h2>
+        <ul>
+          <li>Backend: Python, FastAPI, Uvicorn, Pydantic, aiosqlite</li>
+          <li>Modeling: SciPy (<code>optimize.minimize</code>, <code>signal.find_peaks</code>), NumPy, pandas, joblib, Matplotlib</li>
+          <li>Review tool: React, Vite, Recharts</li>
+          <li>Sorting add-on: Streamlit</li>
+        </ul>
+      </footer>
+    </article>
+  </main>
+
+  <footer>
+    <p>
+      <a href="mailto:ethan.z.fang@gmail.com">Email</a> ·
+      <a href="https://github.com/efang5">GitHub</a> ·
+      <a href="https://www.linkedin.com/in/ethan-fang-12b833273">LinkedIn</a> ·
+      <a href="../experiments.html">Lab</a>
+    </p>
+    <p><small>&copy; 2026 Ethan Fang</small></p>
+  </footer>
+</body>
+</html>

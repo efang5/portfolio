@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ethan Fang's internship work at Packet Micro: a website rebuild and Cable Matcher, a model that scores cable pairings.">
+  <title>Work | Ethan Fang</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <style>
+    header, main, footer { border: 1px solid; }
+  </style>
+</head>
+<body>
+  <header>
+    <p><a href="index.html">Ethan Fang</a></p>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="work.html" aria-current="page">Work</a></li>
+        <li><a href="mentorship.html">Mentorship</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Work</h1>
+    <p>I've interned at <strong>Packet Micro</strong> in Santa Clara twice: in the summers of 2025 and 2026. Packet Micro designs and builds test probes for the semiconductor industry. Each project below gets its own page explaining the problem, what I personally did, and how it turned out.</p>
+
+    <section aria-labelledby="case-studies-heading">
+      <h2 id="case-studies-heading">Case studies</h2>
+
+      <article>
+        <h3>Website Rebuild</h3>
+        <p><time datetime="2025-06">June</time> to <time datetime="2025-09">September 2025</time></p>
+        <p>Rebuilt the company website in React and Next.js, restructured the front end into reusable components, and added redirects so old URLs kept working. In 2026 I added new pages as the product line changed.</p>
+        <ul>
+          <li>React</li>
+          <li>Next.js</li>
+          <li>CSS</li>
+        </ul>
+        <p><a href="work/website-rebuild.html">Read the Website Rebuild case study</a></p>
+      </article>
+
+      <article>
+        <h3>Wire Selection Model</h3>
+        <p><time datetime="2026-06">June</time> to <time datetime="2026-09">September 2026</time></p>
+        <p>Built Cable Matcher, which scores how similar two cables are from their TDR curves using weights learned from an engineer's real pairing decisions, replacing hand-checking every pair.</p>
+        <ul>
+          <li>Python</li>
+          <li>FastAPI</li>
+          <li>SciPy</li>
+          <li>React</li>
+        </ul>
+        <p><a href="work/wire-selection.html">Read the Wire Selection Model case study</a></p>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      <a href="mailto:ethan.z.fang@gmail.com">Email</a> ·
+      <a href="https://github.com/efang5">GitHub</a> ·
+      <a href="https://www.linkedin.com/in/ethan-fang-12b833273">LinkedIn</a> ·
+      <a href="experiments.html">Lab</a>
+    </p>
+    <p><small>&copy; 2026 Ethan Fang</small></p>
+  </footer>
+</body>
+</html>

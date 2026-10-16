@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Contact Ethan Fang about software engineering roles.">
+  <title>Contact | Ethan Fang</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <style>
+    header, main, footer, fieldset, dialog { border: 1px solid; }
+  </style>
+</head>
+<body>
+  <header>
+    <p><a href="index.html">Ethan Fang</a></p>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="mentorship.html">Mentorship</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="contact.html" aria-current="page">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Contact</h1>
+    <p>I'm looking for new-grad software engineering roles starting in 2027. The fastest way to reach me is email.</p>
+
+    <section aria-labelledby="direct-heading">
+      <h2 id="direct-heading">Reach me directly</h2>
+      <ul>
+        <li>Email: <a href="mailto:ethan.z.fang@gmail.com">ethan.z.fang@gmail.com</a></li>
+        <li>LinkedIn: <a href="https://www.linkedin.com/in/ethan-fang-12b833273">linkedin.com/in/ethan-fang-12b833273</a></li>
+        <li>GitHub: <a href="https://github.com/efang5">github.com/efang5</a></li>
+      </ul>
+      <p>
+        Ethan Fang<br>
+        UC San Diego<br>
+        La Jolla, California
+      </p>
+    </section>
+
+    <section aria-labelledby="form-heading">
+      <h2 id="form-heading">Send a message</h2>
+      <form action="#" method="post">
+        <fieldset>
+          <legend>Your message</legend>
+          <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" autocomplete="name" required>
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" autocomplete="email" required>
+          </div>
+          <div>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="6" cols="40" required></textarea>
+          </div>
+          <!-- The button does not submit anywhere yet (no scripting in HW2). -->
+          <button type="submit">Send</button>
+        </fieldset>
+      </form>
+    </section>
+
+    <!-- Confirmation shown after a message is sent. It stays closed for now;
+         JavaScript will open it in a later homework. -->
+    <dialog id="sent-dialog" aria-labelledby="sent-heading">
+      <h2 id="sent-heading">Thanks, your message was sent</h2>
+      <p>I'll get back to you within a few days.</p>
+      <form method="dialog">
+        <button>Close</button>
+      </form>
+    </dialog>
+  </main>
+
+  <footer>
+    <p>
+      <a href="mailto:ethan.z.fang@gmail.com">Email</a> ·
+      <a href="https://github.com/efang5">GitHub</a> ·
+      <a href="https://www.linkedin.com/in/ethan-fang-12b833273">LinkedIn</a> ·
+      <a href="experiments.html">Lab</a>
+    </p>
+    <p><small>&copy; 2026 Ethan Fang</small></p>
+  </footer>
+</body>
+</html>

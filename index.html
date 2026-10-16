@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Portfolio of Ethan Fang, a UC San Diego Computer Science senior who builds web and machine learning software and mentors new programmers.">
+  <meta name="author" content="Ethan Fang">
+  <title>Ethan Fang | Software Engineer</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <style>
+    header, main, footer { border: 1px solid; }
+  </style>
+  <script src="components/hello-world.js" defer></script>
+</head>
+<body>
+  <header>
+    <p><a href="index.html">Ethan Fang</a></p>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="index.html" aria-current="page">Home</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="mentorship.html">Mentorship</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section aria-labelledby="hero-heading">
+      <picture>
+        <source type="image/webp" srcset="images/headshot-300.webp 300w, images/headshot-600.webp 600w" sizes="300px">
+        <img src="images/headshot-300.jpg" srcset="images/headshot-300.jpg 300w, images/headshot-600.jpg 600w" sizes="300px" width="300" height="300" alt="Headshot of Ethan Fang, wearing glasses and a blue collared shirt, standing outside">
+      </picture>
+      <h1 id="hero-heading">Ethan Fang</h1>
+      <p>I'm a Computer Science senior at UC San Diego (graduating <strong>June 2027</strong>). I build web and machine learning software, and I spend a lot of my week helping other students learn to code.</p>
+      <p><a href="resume.html">View my resume</a></p>
+    </section>
+
+    <section aria-labelledby="featured-heading">
+      <h2 id="featured-heading">Featured: Packet Micro</h2>
+      <article>
+        <h3><a href="work/website-rebuild.html">Rebuilding the company website</a></h3>
+        <p>Summer 2025. I rebuilt Packet Micro's website in <b>React</b> and <b>Next.js</b>, made it work on phones, and kept every old link working through the move.</p>
+      </article>
+      <article>
+        <h3><a href="work/wire-selection.html">Automating cable matching</a></h3>
+        <p>2026. I built a model that scores how well two cables match, learning from an engineer's past pairing decisions so nobody has to check every pair by hand.</p>
+      </article>
+    </section>
+
+    <section aria-labelledby="more-heading">
+      <h2 id="more-heading">Beyond the code</h2>
+      <article>
+        <h3><a href="mentorship.html">Mentorship</a></h3>
+        <p>Weekly web development workshops with ACM Hack Squad, a first-year mentee through Bit-Byte, and events for UCSD Scholars Society.</p>
+      </article>
+      <article>
+        <h3><a href="about.html">About me</a></h3>
+        <p>Who I am outside of a resume, and the advice I keep coming back to.</p>
+      </article>
+    </section>
+
+    <!-- Custom Element #2: logs "Hello World!" to the console without changing the page -->
+    <hello-world></hello-world>
+  </main>
+
+  <footer>
+    <p>
+      <a href="mailto:ethan.z.fang@gmail.com">Email</a> ·
+      <a href="https://github.com/efang5">GitHub</a> ·
+      <a href="https://www.linkedin.com/in/ethan-fang-12b833273">LinkedIn</a> ·
+      <a href="experiments.html">Lab</a>
+    </p>
+    <p><small>&copy; 2026 Ethan Fang</small></p>
+  </footer>
+</body>
+</html>

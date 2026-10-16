@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Case study: how Ethan Fang rebuilt Packet Micro's company website in React and Next.js.">
+  <title>Website Rebuild | Ethan Fang</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <style>
+    header, main, footer { border: 1px solid; }
+
+    /* Custom Element #1: <role-callout>, a semantic block that marks what I personally did on a project. */
+    role-callout {
+      display: block;
+      border: 2px solid;
+      padding: 0.5rem 1rem;
+      margin: 1rem 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <p><a href="../index.html">Ethan Fang</a></p>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../work.html">Work</a></li>
+        <li><a href="../mentorship.html">Mentorship</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../resume.html">Resume</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <p><a href="../work.html">&larr; Back to Work</a></p>
+
+    <article>
+      <header>
+        <h1>Website Rebuild</h1>
+        <p>Packet Micro, Santa Clara · <time datetime="2025-06">June</time> to <time datetime="2025-09">September 2025</time>, with new pages added in summer <time datetime="2026">2026</time></p>
+      </header>
+
+      <p>I rebuilt Packet Micro's company website from the ground up so it works well on phones, is easier for search engines to find, and is easier for the next developer to maintain, without breaking any of the old links.</p>
+
+      <role-callout>
+        <h2>My Role</h2>
+        <p>I was the intern responsible for the rebuild. I wrote the new front end, reorganized it into reusable components, restyled the pages, and set up the routing and redirects for the old URLs.</p>
+      </role-callout>
+
+      <section aria-labelledby="problem-heading">
+        <h2 id="problem-heading">Problem</h2>
+        <p>The old site was hard to use on a phone and was not set up well for search engines. Its code also repeated a lot of the same markup across pages, so even a small change meant editing many files.</p>
+      </section>
+
+      <section aria-labelledby="approach-heading">
+        <h2 id="approach-heading">Approach</h2>
+        <ol>
+          <li><strong>Rebuild on React and Next.js.</strong> Next.js gave each page its own route and made it straightforward to serve pages that search engines can read.</li>
+          <li><strong>Break the front end into components.</strong> Repeated pieces like the header, footer and shared page sections became shared components, so a change happens in one place.</li>
+          <li><strong>Restructure the CSS.</strong> I reorganized the styles around those components so the pages look consistent and adapt to small screens.</li>
+          <li><strong>Keep old links alive.</strong> I added routing rules and redirects so every legacy URL, including ones bookmarked by customers or linked from other sites, still lands on the right page.</li>
+        </ol>
+        <p>I used <i>AI-assisted development</i> with Cursor during the build, which sped up the repetitive parts. I still reviewed and tested everything it produced, since I was the one responsible for the site working.</p>
+        <figure>
+          <picture>
+            <source type="image/webp" srcset="../images/packet-micro-desktop-800.webp 800w, ../images/packet-micro-desktop-1200.webp 1200w" sizes="(max-width: 840px) 100vw, 800px">
+            <img src="../images/packet-micro-desktop-800.jpg" srcset="../images/packet-micro-desktop-800.jpg 800w, ../images/packet-micro-desktop-1200.jpg 1200w" sizes="(max-width: 840px) 100vw, 800px" width="800" height="414" alt="The Packet Micro homepage on desktop: a navigation bar, a banner for DIY benchtop probe stations, and a row of customer logos">
+          </picture>
+          <figcaption>The rebuilt homepage at <a href="https://packetmicro.com">packetmicro.com</a> on a desktop screen.</figcaption>
+        </figure>
+      </section>
+
+      <section aria-labelledby="result-heading">
+        <h2 id="result-heading">Result</h2>
+        <p>The new site shipped and is live at <a href="https://packetmicro.com">packetmicro.com</a>. It works on phones, is better optimized for search, and is built from components that are much easier to update. Old URLs <em>still</em> work, so nobody following an old link hits a dead page.</p>
+      </section>
+
+      <section aria-labelledby="return-heading">
+        <h2 id="return-heading">Back in 2026</h2>
+        <p>When I returned in summer 2026, I added new pages to the site to reflect changes in Packet Micro's products. Because the site was already built from shared components, new pages could reuse the same header, footer and layout instead of starting from scratch.</p>
+      </section>
+
+      <section aria-labelledby="learned-heading">
+        <h2 id="learned-heading">What I learned</h2>
+        <p>A redesign is also a migration. The part users never see, making sure the old URLs keep working, mattered as much as the new pages did.</p>
+      </section>
+
+      <footer>
+        <h2>Tech used</h2>
+        <ul>
+          <li>React</li>
+          <li>Next.js</li>
+          <li>CSS</li>
+          <li>Cursor</li>
+        </ul>
+      </footer>
+    </article>
+  </main>
+
+  <footer>
+    <p>
+      <a href="mailto:ethan.z.fang@gmail.com">Email</a> ·
+      <a href="https://github.com/efang5">GitHub</a> ·
+      <a href="https://www.linkedin.com/in/ethan-fang-12b833273">LinkedIn</a> ·
+      <a href="../experiments.html">Lab</a>
+    </p>
+    <p><small>&copy; 2026 Ethan Fang</small></p>
+  </footer>
+</body>
+</html>

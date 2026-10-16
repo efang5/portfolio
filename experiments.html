@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ethan Fang's lab page: experiments with template, audio, video, canvas, source and MathML.">
+  <title>Lab | Ethan Fang</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <style>
+    header, main, footer, canvas { border: 1px solid; }
+  </style>
+  <script src="components/hello-world.js" defer></script>
+</head>
+<body>
+  <header>
+    <p><a href="index.html">Ethan Fang</a></p>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="work.html">Work</a></li>
+        <li><a href="mentorship.html">Mentorship</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Lab</h1>
+    <p>A page for trying out newer and less common HTML elements.</p>
+
+    <section aria-labelledby="template-heading">
+      <h2 id="template-heading">Template</h2>
+      <p>A <code>template</code> holds markup that the browser parses but does not show. Below is a template for a mentorship card that JavaScript could copy onto the Mentorship page later. You won't see it on this page.</p>
+      <template id="mentorship-card-template">
+        <article>
+          <h3>Role title</h3>
+          <p><time datetime="2026-01">Start date</time> to present</p>
+          <p>Short description of the role.</p>
+        </article>
+      </template>
+    </section>
+
+    <section aria-labelledby="audio-heading">
+      <h2 id="audio-heading">Audio</h2>
+      <p>A three-second 440 Hz test tone (the note A). Two <code>source</code> elements give the browser a choice of formats.</p>
+      <audio controls preload="metadata">
+        <source src="media/tone.ogg" type="audio/ogg">
+        <source src="media/tone.mp3" type="audio/mpeg">
+        Your browser does not support the audio element. <a href="media/tone.mp3">Download the tone</a>.
+      </audio>
+    </section>
+
+    <section aria-labelledby="video-heading">
+      <h2 id="video-heading">Video</h2>
+      <p>A four-second silent test pattern, offered as WebM and MP4.</p>
+      <video controls width="320" height="180" preload="metadata">
+        <source src="media/sample.webm" type="video/webm">
+        <source src="media/sample.mp4" type="video/mp4">
+        Your browser does not support the video element. <a href="media/sample.mp4">Download the video</a>.
+      </video>
+    </section>
+
+    <section aria-labelledby="canvas-heading">
+      <h2 id="canvas-heading">Canvas</h2>
+      <p>A small bar chart drawn with a few lines of JavaScript. It shows how many Mentorship entries fall in each group on my site.</p>
+      <canvas id="mentor-chart" width="320" height="160">Bar chart: ACM, 2 roles; Scholars Society, 3 roles; Community, 1 role.</canvas>
+      <noscript><p>The chart above needs JavaScript. ACM has 2 roles, Scholars Society has 3, and Community has 1.</p></noscript>
+      <script>
+        const ctx = document.getElementById("mentor-chart").getContext("2d");
+        const bars = [["ACM", 2], ["Scholars", 3], ["Community", 1]];
+        ctx.font = "14px sans-serif";
+        bars.forEach(([label, count], i) => {
+          ctx.fillRect(20 + i * 100, 130 - count * 35, 60, count * 35);
+          ctx.fillText(label, 20 + i * 100, 150);
+        });
+      </script>
+    </section>
+
+    <section aria-labelledby="math-heading">
+      <h2 id="math-heading">MathML: mass-energy equivalence</h2>
+      <p>Einstein's mass-energy equivalence, written in MathML:</p>
+      <math display="block">
+        <mi>E</mi>
+        <mo>=</mo>
+        <mi>m</mi>
+        <msup>
+          <mi>c</mi>
+          <mn>2</mn>
+        </msup>
+      </math>
+      <h3>Why MathML took so long to be usable</h3>
+      <p>MathML has been part of web standards since the late 1990s, but for most of that time developers couldn't count on it. Firefox and Safari supported it, but Chrome, the most widely used browser, did not. Chrome briefly shipped MathML in version 24 and then removed it, and it only came back when Chrome 109 added MathML Core in January 2023. Since Edge and Opera are built on Chromium, they gained support at the same time. Until then, sites had to rely on JavaScript libraries like MathJax or on images of equations.</p>
+      <p>Source: <a href="https://caniuse.com/mathml">Can I use: MathML</a></p>
+    </section>
+
+    <hello-world></hello-world>
+  </main>
+
+  <footer>
+    <p>
+      <a href="mailto:ethan.z.fang@gmail.com">Email</a> ·
+      <a href="https://github.com/efang5">GitHub</a> ·
+      <a href="https://www.linkedin.com/in/ethan-fang-12b833273">LinkedIn</a> ·
+      <a href="experiments.html" aria-current="page">Lab</a>
+    </p>
+    <p><small>&copy; 2026 Ethan Fang</small></p>
+  </footer>
+</body>
+</html>
